@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/charlottej/Downloads/index_3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAM Universal — BD Intelligence</title>
+<link href="./RAM Universal — BD Intelligence_3_files/css2" rel="stylesheet">
+<style>
+:root {
+  --red:#EA1E37; --red-dark:#c4112a; --red-light:#fdf0f2;
+  --ink:#1a1a1a; --ink-2:#444; --ink-3:#777; --ink-4:#aaa;
+  --surface:#f8f7f5; --surface-2:#f0ede8;
+  --white:#ffffff; --border:#ddd9d2; --border-2:#ccc8c0;
+  --green:#1a6b3c; --green-bg:#e8f5ee; --green-b:#9fd8b8;
+  --amber:#7a4a00; --amber-bg:#fef3e2; --amber-b:#f5d89e;
+  --blue:#0a4a7a; --blue-bg:#e8f0f8; --blue-b:#a0c4e8;
+  --purple:#4a2878; --purple-bg:#f0ebf8; --purple-b:#c4a8e8;
+  --teal:#0a5a5a; --teal-bg:#e8f5f5;
+  --orange:#7a3000; --orange-bg:#fef0e6;
+  --lime:#3a5a00; --lime-bg:#f0f5e6;
+  --r:10px; --r-sm:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--surface);color:var(--ink);font-size:14px;line-height:1.6;min-height:100vh}
+
+.topbar{background:var(--ink);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.tb-brand{display:flex;align-items:center;gap:12px}
+.tb-logo{width:28px;height:28px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px;color:white}
+.tb-name{font-size:13px;font-weight:500;color:white}
+.tb-div{width:1px;height:16px;background:#444}
+.tb-section{font-size:12px;color:#aaa;font-weight:300}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-meta{font-size:11px;color:#666;font-family:"DM Mono",monospace}
+.btn-run{background:var(--red);color:white;border:none;padding:7px 14px;border-radius:5px;font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;display:flex;align-items:center;gap:6px;transition:background .15s}
+.btn-run:hover{background:var(--red-dark)}
+.btn-run:disabled{opacity:.6;cursor:default}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;animation:spin 1s linear infinite}
+
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 52px)}
+
+.sidebar{background:var(--white);border-right:1px solid var(--border);padding:18px 0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto}
+.sb-sec{padding:0 16px;margin-bottom:20px}
+.sb-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-bottom:9px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat-item{background:var(--surface);border-radius:var(--r-sm);padding:8px 10px}
+.stat-n{font-size:18px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:2px}
+.stat-n.red{color:var(--red)}
+.stat-l{font-size:10px;color:var(--ink-3)}
+.sb-div{height:1px;background:var(--border);margin:2px 16px 18px}
+.fb{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:var(--r-sm);cursor:pointer;font-size:12px;color:var(--ink-2);border:none;background:transparent;width:100%;text-align:left;font-family:"DM Sans",sans-serif}
+.fb:hover{background:var(--surface)}
+.fb.active{background:var(--red-light);color:var(--red);font-weight:500}
+.f-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.f-count{margin-left:auto;font-size:10px;color:var(--ink-4);font-family:"DM Mono",monospace}
+.fb.active .f-count{color:var(--red)}
+.sb-btn{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:var(--r-sm);cursor:pointer;font-size:12px;color:var(--ink-2);border:none;background:transparent;width:100%;text-align:left;font-family:"DM Sans",sans-serif}
+.sb-btn:hover{background:var(--surface)}
+.s-sq{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+
+.main{padding:22px 26px;max-width:980px}
+.pg-title{font-size:19px;font-weight:600;margin-bottom:3px}
+.pg-sub{font-size:12px;color:var(--ink-3);margin-bottom:20px}
+.pg-sub strong{color:var(--ink-2);font-weight:500}
+.card-list{display:flex;flex-direction:column;gap:10px}
+
+.opp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow .15s}
+.opp-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.opp-card[data-new="true"]{border-left:3px solid var(--red)}
+.card-hdr{padding:14px 16px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;user-select:none}
+.card-hdr:hover{background:var(--surface)}
+.opp-card.open .card-hdr{background:var(--surface)}
+.card-title{font-size:14px;font-weight:600;margin-bottom:2px;line-height:1.4}
+.card-client{font-size:12px;color:var(--ink-3);margin-bottom:7px}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tag{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:500}
+.t-nuc{background:var(--teal-bg);color:var(--teal)}
+.t-fus{background:var(--purple-bg);color:var(--purple)}
+.t-hyd{background:var(--blue-bg);color:var(--blue)}
+.t-efw{background:var(--amber-bg);color:var(--amber)}
+.t-min{background:var(--surface-2);color:var(--ink-2)}
+.t-chem{background:var(--red-light);color:var(--red-dark)}
+.t-new{background:var(--green-bg);color:var(--green)}
+.t-feed{background:var(--amber-bg);color:var(--amber)}
+.t-slow{background:var(--surface-2);color:var(--ink-3)}
+.t-fab{background:var(--orange-bg);color:var(--orange)}
+.t-bat{background:var(--lime-bg);color:var(--lime)}
+.card-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.m-key{font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.m-val{font-size:12px;font-weight:500}
+.score-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.score-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.s-high{background:var(--green-bg);color:var(--green)}
+.s-mid{background:var(--amber-bg);color:var(--amber)}
+.s-low{background:var(--surface-2);color:var(--ink-3)}
+.spill{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;white-space:nowrap}
+.sp-new{background:var(--green-bg);color:var(--green)}
+.sp-contacted{background:var(--blue-bg);color:var(--blue)}
+.sp-responded{background:var(--purple-bg);color:var(--purple)}
+.sp-quoted{background:var(--amber-bg);color:var(--amber)}
+.sp-dead{background:var(--surface-2);color:var(--ink-3)}
+.chevron{width:14px;height:14px;transition:transform .2s;flex-shrink:0;margin-top:3px;stroke:var(--ink-3)}
+.opp-card.open .chevron{transform:rotate(180deg)}
+
+.card-detail{display:none;border-top:1px solid var(--border)}
+.opp-card.open .card-detail{display:block}
+.detail-cols{display:grid;grid-template-columns:1fr 300px;min-height:0}
+.detail-left{padding:16px;border-right:1px solid var(--border)}
+.detail-right{padding:16px;background:var(--surface)}
+
+.dsummary{background:var(--surface-2);border-radius:var(--r-sm);padding:10px 12px;font-size:12px;color:var(--ink-2);line-height:1.65;margin-bottom:14px}
+.alert-box{background:var(--amber-bg);border:1px solid var(--amber-b);border-radius:var(--r-sm);padding:9px 12px;margin-bottom:12px}
+.alert-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:3px}
+.alert-txt{font-size:12px;color:#5a3a00;line-height:1.55}
+.d-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:7px}
+.d-sec{margin-bottom:14px}
+.cont-list{display:flex;flex-direction:column;gap:6px}
+.cont{border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 10px;background:var(--white)}
+.cont-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:3px}
+.cont-name{font-size:12px;font-weight:600}
+.cont-role{font-size:10px;padding:2px 6px;border-radius:20px;font-weight:500;flex-shrink:0}
+.r-lead{background:var(--green-bg);color:var(--green)}
+.r-feed{background:var(--amber-bg);color:var(--amber)}
+.r-sub{background:var(--blue-bg);color:var(--blue)}
+.r-design{background:var(--blue-bg);color:var(--blue)}
+.r-pm{background:var(--purple-bg);color:var(--purple)}
+.r-support{background:var(--surface-2);color:var(--ink-3)}
+.r-op{background:var(--red-light);color:var(--red-dark)}
+.r-dev{background:var(--amber-bg);color:var(--amber)}
+.cont-scope{font-size:11px;color:var(--ink-3);line-height:1.55}
+.eq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}
+.eq-item{background:var(--surface);border-radius:var(--r-sm);padding:6px 8px}
+.eq-lbl{font-size:10px;color:var(--ink-4);margin-bottom:2px}
+.eq-val{font-size:12px;font-weight:600}
+.eq-h{color:var(--green)} .eq-m{color:var(--amber)} .eq-l{color:var(--ink-3)}
+.ap-box{background:var(--green-bg);border:1px solid var(--green-b);border-radius:var(--r-sm);padding:9px 12px}
+.ap-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:3px}
+.ap-txt{font-size:12px;color:#0f4a28;line-height:1.6}
+
+.status-sec{margin-bottom:16px}
+.status-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:7px}
+.status-opts{display:flex;flex-direction:column;gap:3px}
+.so{display:flex;align-items:center;gap:7px;padding:6px 9px;border-radius:var(--r-sm);cursor:pointer;font-size:12px;border:1px solid transparent;background:var(--white);color:var(--ink-3);font-family:"DM Sans",sans-serif;width:100%;text-align:left;transition:all .1s}
+.so:hover{background:var(--surface-2);border-color:var(--border)}
+.so-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.so.act-new{background:var(--green-bg);border-color:var(--green-b);color:var(--green);font-weight:500}
+.so.act-contacted{background:var(--blue-bg);border-color:var(--blue-b);color:var(--blue);font-weight:500}
+.so.act-responded{background:var(--purple-bg);border-color:var(--purple-b);color:var(--purple);font-weight:500}
+.so.act-quoted{background:var(--amber-bg);border-color:var(--amber-b);color:var(--amber);font-weight:500}
+.so.act-dead{background:var(--surface-2);border-color:var(--border-2);color:var(--ink-3);font-weight:500}
+
+.notes-sec{border-top:1px solid var(--border);padding-top:14px}
+.notes-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:8px}
+.notes-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;max-height:220px;overflow-y:auto}
+.note-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:7px 9px}
+.note-top{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.note-av{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:white;flex-shrink:0}
+.note-author{font-size:11px;font-weight:600;color:var(--ink-2);flex:1}
+.note-date{font-size:10px;color:var(--ink-4);font-family:"DM Mono",monospace}
+.note-del{background:none;border:none;cursor:pointer;color:var(--ink-4);font-size:12px;padding:0;font-family:inherit;line-height:1}
+.note-del:hover{color:var(--red)}
+.note-text{font-size:12px;color:var(--ink-2);line-height:1.5}
+.note-compose{display:flex;flex-direction:column;gap:6px}
+.note-author-row{display:flex;align-items:center;gap:6px}
+.note-author-lbl{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.note-author-sel{flex:1;padding:4px 6px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:11px;font-family:"DM Sans",sans-serif;background:var(--white);color:var(--ink)}
+.note-input{width:100%;padding:6px 9px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--white);resize:none;min-height:54px;line-height:1.45}
+.note-input:focus{outline:none;border-color:var(--border-2)}
+.note-submit{background:var(--ink);color:white;border:none;padding:6px 12px;border-radius:var(--r-sm);font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif;width:100%}
+.note-submit:hover{background:#333}
+
+.sec-div{height:1px;background:var(--border);margin:22px 0 16px}
+.sec-hdr{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:9px}
+.watch-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.w-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.w-why{font-size:12px;color:var(--ink-3);line-height:1.5}
+.w-score{font-family:"DM Mono",monospace;font-size:12px;color:var(--ink-4);white-space:nowrap}
+
+.sb-select{width:100%;padding:5px 8px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:"DM Sans",sans-serif;background:var(--white);color:var(--ink);cursor:pointer}
+.sb-select:focus{outline:none;border-color:var(--ink-3)}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--ink);color:white;padding:8px 14px;border-radius:var(--r-sm);font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none;z-index:999}
+.toast.show{opacity:1;transform:translateY(0)}
+
+
+.act-section{margin-top:0}
+.act-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4);margin-bottom:8px}
+.act-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;max-height:260px;overflow-y:auto}
+.act-item{background:var(--white);border:0.5px solid var(--border);border-radius:var(--r-sm);padding:7px 9px}
+.act-top{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.act-av{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:white;flex-shrink:0}
+.act-author{font-size:11px;font-weight:600;color:var(--ink-2);flex:1}
+.act-date{font-size:10px;color:var(--ink-4);font-family:"DM Mono",monospace}
+.act-del{background:none;border:none;cursor:pointer;color:var(--ink-4);font-size:12px;padding:0;line-height:1}
+.act-del:hover{color:var(--red)}
+.act-type-pill{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;margin-bottom:3px}
+.at-email{background:#e8f0f8;color:#0a4a7a}
+.at-linkedin{background:#e8f5ee;color:#1a6b3c}
+.at-call{background:#fef3e2;color:#7a4a00}
+.at-meeting-req{background:#f0ebf8;color:#4a2878}
+.at-meeting-held{background:#e8f5f5;color:#0a5a5a}
+.at-brochure{background:#fdf0f2;color:#9e0d23}
+.at-referral{background:#f5f0e8;color:#5a4a00}
+.act-note{font-size:12px;color:var(--ink-2);line-height:1.5}
+.act-compose{display:flex;flex-direction:column;gap:6px}
+.act-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.act-select{padding:6px 8px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:"DM Sans",sans-serif;background:var(--white);color:var(--ink)}
+.act-select:focus{outline:none;border-color:var(--border-2)}
+.act-input{padding:6px 9px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--white);resize:none;min-height:52px;line-height:1.45;width:100%}
+.act-input:focus{outline:none;border-color:var(--border-2)}
+.act-submit{background:var(--ink);color:white;border:none;padding:6px 12px;border-radius:var(--r-sm);font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif;width:100%}
+.act-submit:hover{background:#333}
+
+/* ---- TABS ---- */
+.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--white);padding:0 26px;margin-bottom:0}
+.tab-btn{padding:11px 18px;font-size:13px;font-weight:500;color:var(--ink-3);border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:"DM Sans",sans-serif;display:flex;align-items:center;gap:7px;transition:color .15s}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.tab-active{color:var(--red);border-bottom-color:var(--red)}
+.tab-badge{background:var(--red);color:white;font-size:10px;font-weight:600;padding:1px 6px;border-radius:20px;min-width:18px;text-align:center}
+.tab-pane{display:none}
+.tab-pane.tab-show{display:block}
+
+/* ---- TENDERS TAB ---- */
+.tf-bar{display:flex;align-items:center;gap:10px;padding:16px 26px 14px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--white)}
+.tf-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-4)}
+.tf-select{padding:6px 10px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:"DM Sans",sans-serif;background:var(--white);color:var(--ink);cursor:pointer}
+.tf-select:focus{outline:none;border-color:var(--ink-3)}
+.btn-fetch{background:var(--red);color:white;border:none;padding:7px 14px;border-radius:5px;font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;display:flex;align-items:center;gap:6px;transition:background .15s;white-space:nowrap}
+.btn-fetch:hover{background:var(--red-dark)}
+.btn-fetch:disabled{opacity:.5;cursor:default}
+.tf-meta{font-size:11px;color:var(--ink-4);font-family:"DM Mono",monospace;margin-left:auto}
+.tender-list{display:flex;flex-direction:column;gap:8px;padding:20px 26px;max-width:980px}
+.tender-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;transition:box-shadow .15s}
+.tender-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.07)}
+.tender-card.tc-open{border-color:var(--green);border-left:3px solid var(--green)}
+.tender-card.tc-award{border-left:3px solid var(--ink-4)}
+.tc-title{font-size:13px;font-weight:600;margin-bottom:3px;line-height:1.4}
+.tc-org{font-size:12px;color:var(--ink-3);margin-bottom:7px}
+.tc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.tc-tag{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500}
+.tc-open-tag{background:var(--green-bg);color:var(--green)}
+.tc-award-tag{background:var(--surface-2);color:var(--ink-3)}
+.tc-future-tag{background:var(--blue-bg);color:var(--blue)}
+.tc-val{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;text-align:right}
+.tc-dl{font-size:11px;color:var(--ink-3);text-align:right;margin-top:3px;font-family:"DM Mono",monospace}
+.tc-cpv{font-size:11px;color:var(--ink-4);margin-top:6px;line-height:1.5}
+.tc-link{font-size:11px;color:var(--red);text-decoration:none;display:inline-flex;align-items:center;gap:3px;margin-top:8px;font-weight:500}
+.tc-link:hover{text-decoration:underline}
+.tf-empty{text-align:center;padding:60px 20px;color:var(--ink-3)}
+.tf-empty-icon{font-size:32px;margin-bottom:12px}
+.tf-empty-title{font-size:15px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.tf-empty-sub{font-size:13px;line-height:1.6}
+.tf-loading{text-align:center;padding:40px;color:var(--ink-3);font-size:13px}
+.tf-error{background:var(--red-light);border:1px solid #f5c0c8;border-radius:var(--r);padding:14px 16px;margin:20px 26px;font-size:13px;color:#8a0010}
+.cpv-pill{display:inline-block;background:var(--surface-2);color:var(--ink-3);font-size:10px;padding:1px 6px;border-radius:4px;margin:1px;font-family:"DM Mono",monospace}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-brand">
+    <img src="data:image/png;base64,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" style="height:32px;width:auto;display:block" alt="RAM Universal">
+    <div class="tb-div"></div>
+    <span class="tb-section">BD Intelligence</span>
+  </div>
+  <div class="tb-right">
+    <span class="tb-meta" id="last-run" style="color:#888">● Last updated: <span id="last-updated-val">Thu 2 Apr 2026, 16:31</span></span>
+  </div>
+</div>
+
+
+<div class="tab-bar">
+  <button class="tab-btn tab-active" id="tab-intel-btn" onclick="switchTab(&#39;intel&#39;)">
+    Intelligence board
+    <span class="tab-badge" id="intel-badge">8</span>
+  </button>
+  <button class="tab-btn" id="tab-tenders-btn" onclick="switchTab(&#39;tenders&#39;)">
+    Live tenders — Contracts Finder
+    <span class="tab-badge" id="tenders-badge" style="background:var(--ink-3)">0</span>
+  </button>
+  <button class="tab-btn" id="tab-news-btn" onclick="switchTab(&#39;news&#39;)">
+    News scan
+    <span class="tab-badge" id="news-badge" style="background:var(--ink-3)">0</span>
+  </button>
+</div>
+
+<div id="tab-intel" class="tab-pane tab-show">
+<div class="layout">
+<div class="sidebar">
+  <div class="sb-sec">
+    <div class="sb-label">This run</div>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="stat-n red">8</div><div class="stat-l">Active opps</div></div>
+      <div class="stat-item"><div class="stat-n">12.9</div><div class="stat-l">Avg score</div></div>
+      <div class="stat-item"><div class="stat-n">2</div><div class="stat-l">New signals</div></div>
+      <div class="stat-item"><div class="stat-n">£12bn+</div><div class="stat-l">Pipeline value</div></div>
+    </div>
+  </div>
+  <div class="sb-div"></div>
+  <div class="sb-sec">
+    <div class="sb-label">Sector</div>
+    <button class="fb active" onclick="filterSector(this,&#39;all&#39;)"><span class="f-dot" style="background:#ccc"></span>All<span class="f-count">8</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;nuc&#39;)"><span class="f-dot" style="background:var(--teal)"></span>Nuclear<span class="f-count">3</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;fus&#39;)"><span class="f-dot" style="background:var(--purple)"></span>Fusion<span class="f-count">1</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;hyd&#39;)"><span class="f-dot" style="background:var(--blue)"></span>Hydrogen<span class="f-count">1</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;efw&#39;)"><span class="f-dot" style="background:var(--amber)"></span>Energy from waste<span class="f-count">2</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;chem&#39;)"><span class="f-dot" style="background:var(--red)"></span>Chemical process<span class="f-count">1</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;min&#39;)"><span class="f-dot" style="background:#888"></span>Mining<span class="f-count">1</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;fab&#39;)"><span class="f-dot" style="background:var(--orange)"></span>Food &amp; beverage<span class="f-count">0</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;bat&#39;)"><span class="f-dot" style="background:var(--lime)"></span>Battery / recycling<span class="f-count">0</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;mar&#39;)"><span class="f-dot" style="background:#0a6080"></span>Marine<span class="f-count">0</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;def&#39;)"><span class="f-dot" style="background:#3a3a6a"></span>Defence<span class="f-count">0</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;uni&#39;)"><span class="f-dot" style="background:#5a2080"></span>University / FEED studies<span class="f-count">0</span></button>
+    <button class="fb" onclick="filterSector(this,&#39;mat&#39;)"><span class="f-dot" style="background:#7a5020"></span>Construction materials<span class="f-count">0</span></button>
+  </div>
+  <div class="sb-div"></div>
+  <div class="sb-sec">
+    <div class="sb-label">Status</div>
+    <button class="sb-btn" onclick="filterStatus(&#39;all&#39;)"><span class="s-sq" style="background:#ccc"></span>All</button>
+    <button class="sb-btn" onclick="filterStatus(&#39;New&#39;)"><span class="s-sq" style="background:var(--green)"></span>New</button>
+    <button class="sb-btn" onclick="filterStatus(&#39;Contacted&#39;)"><span class="s-sq" style="background:var(--blue)"></span>Contacted</button>
+    <button class="sb-btn" onclick="filterStatus(&#39;Responded&#39;)"><span class="s-sq" style="background:var(--purple)"></span>Response received</button>
+    <button class="sb-btn" onclick="filterStatus(&#39;Quoted&#39;)"><span class="s-sq" style="background:var(--amber)"></span>Quote sent</button>
+    <button class="sb-btn" onclick="filterStatus(&#39;Dead&#39;)"><span class="s-sq" style="background:#ccc"></span>Dead</button>
+  </div>
+  <div class="sb-sec">
+    <div class="sb-label">Subcontract size</div>
+    <button class="sb-btn active-size" id="sz-all" onclick="filterSize(&#39;all&#39;)"><span class="s-sq" style="background:#ccc"></span>All sizes</button>
+    <button class="sb-btn" id="sz-200k" onclick="filterSize(&#39;200k&#39;)"><span class="s-sq" style="background:var(--green)"></span>£200k – £500k</button>
+    <button class="sb-btn" id="sz-500k" onclick="filterSize(&#39;500k&#39;)"><span class="s-sq" style="background:var(--blue)"></span>£500k – £2m</button>
+    <button class="sb-btn" id="sz-large" onclick="filterSize(&#39;large&#39;)"><span class="s-sq" style="background:var(--red)"></span>£2m+</button>
+  </div>
+  <div class="sb-sec">
+    <div class="sb-label">Sort by</div>
+    <select class="sb-select" id="sort-sel" onchange="sortCards(this.value)">
+      <option value="score">Most likely valve requirement</option>
+      <option value="updated">Latest addition</option>
+      <option value="project">Largest project</option>
+    </select>
+  </div>
+  <div class="sb-div"></div>
+  <div class="sb-sec">
+    <div class="sb-label">Your name</div>
+    <div style="font-size:12px;color:var(--ink-3)">Notes added as:
+      <select id="global-author" style="margin-top:6px;padding:5px 7px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-family:inherit;background:var(--white);color:var(--ink);width:100%" onchange="syncAuthors()">
+        <option>Charlotte</option>
+        <option>Robert James</option>
+        <option value="__add">+ Add name</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="pg-title">BD intelligence pipeline</div>
+  <div class="pg-sub">w/c <strong>2 April 2026</strong> · 16 signals reviewed · 8 prioritised · Water excluded</div>
+  <div class="card-list">
+    <div class="opp-card" data-sector="nuc chem" data-status="New" data-new="true" id="card-urenco" data-score="13" data-size="large" data-updated="2026-04-02">
+      <div class="card-hdr" onclick="toggleCard(&#39;urenco&#39;)">
+        <div>
+          <div class="card-title">Urenco TMF expansion — Capenhurst, Cheshire</div>
+          <div class="card-client">Client: Urenco ChemPlants · Capenhurst, near Chester</div>
+          <div class="card-tags"><span class="tag t-nuc">Nuclear</span><span class="tag t-chem">Chemical process</span><span class="tag t-feed">FEED complete → EPC imminent</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Contract value</div><div class="m-val">Multi-£m · £1bn capex 2026–27</div></div>
+            <div><div class="m-key">FEED awarded</div><div class="m-val">Late 2023 · EPC award imminent</div></div>
+            <div><div class="m-key">Completion</div><div class="m-val">~7 yrs from award · ~2030–31</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">13</div>
+          <div class="spill sp-new" id="spill-urenco">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            <div class="alert-box"><div class="alert-lbl">Timing signal</div><div class="alert-txt">Bechtel's 18-month FEED (awarded late 2023) should now be complete. Urenco's capex peaks at ~£1bn/yr in 2026–27 with TMF explicitly named. EPC contract award is likely imminent — Bechtel is the frontrunner to convert from FEED to EPC.</div></div>
+            <div class="dsummary">Urenco's Tails Management Facility at Capenhurst is the only one of its kind in the UK. The expansion doubles capacity from two kilns to four, processing depleted uranium hexafluoride (UF6) into stable uranium oxide and producing hydrogen fluoride as a co-product. Highly corrosive fluoride environment requiring specialist PTFE-lined and corrosion-resistant valves throughout. Urenco's order book stands at €21.3bn extending to the 2040s.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Bechtel</div><span class="cont-role r-feed">FEED → likely EPC</span></div>
+          <div class="cont-scope">Selected after rigorous procurement to provide FEED. With FEED now complete, Bechtel is the primary candidate for the subsequent EPC contract and the main commercial contact for RAM supply chain inclusion.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Cavendish Nuclear (Babcock)</div><span class="cont-role r-sub">Subconsultant to Bechtel</span></div>
+          <div class="cont-scope">Nuclear engineering and safety case expertise supporting Bechtel. Prior Sellafield track record. Likely to continue through EPC as specialist nuclear engineering support.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Urenco ChemPlants</div><span class="cont-role r-op">Owner / operator</span></div>
+          <div class="cont-scope">Urenco subsidiary owning and operating the TMF. Sets the technical specification — not the primary procurement route but worth understanding for spec detail.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">BakerHicks</div><span class="cont-role r-support">Previous design support</span></div>
+          <div class="cont-scope">Delivered process and detailed design for the original TMF. Also holds the Legacy Cylinder Facility project. Likely specialist process design support on the expansion.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">PTFE-lined / Richter valves</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">High-integrity isolation</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Safety / relief valves</div><div class="eq-val eq-m">Medium</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">Bechtel UK infrastructure / nuclear team — they will place equipment orders as EPC. Cavendish Nuclear for technical spec. EPC award timing is now. RAM's PTFE-lined Richter valve range and F4N accreditation are the key angles.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;urenco&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;urenco&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;urenco&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;urenco&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;urenco&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-urenco"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-urenco">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-urenco">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-urenco" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;urenco&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;urenco&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="opp-card" data-sector="fus nuc" data-status="New" id="card-step" data-score="14" data-size="large" data-updated="2026-03-20">
+      <div class="card-hdr" onclick="toggleCard(&#39;step&#39;)">
+        <div>
+          <div class="card-title">STEP Fusion — ILIOS consortium (Kier / Nuvia / AECOM)</div>
+          <div class="card-client">Client: UK Fusion Energy (UKAEA) · West Burton, Nottinghamshire</div>
+          <div class="card-tags"><span class="tag t-fus">Fusion</span><span class="tag t-nuc">Nuclear</span><span class="tag t-new">Supply chain mobilising — Mar 2026</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Contract value</div><div class="m-val">£200m Phase 1 · £10bn programme</div></div>
+            <div><div class="m-key">Awarded</div><div class="m-val">17 Mar 2026</div></div>
+            <div><div class="m-key">Contract end</div><div class="m-val">~Sept 2030 · option to 2040</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">14</div>
+          <div class="spill sp-new" id="spill-step">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            
+            <div class="dsummary">ILIOS (Kier/Nuvia JV + AECOM + Turner &amp; Townsend + AL_A) appointed as construction partner for STEP — the UK's prototype fusion power plant at the former West Burton coal station. £200m Phase 1 covers all buildings, infrastructure and site facilities. Peak construction supports 8,000 jobs. Total programme up to £10bn to 2040.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Kier Group + Nuvia (VINCI) — JV lead</div><span class="cont-role r-lead">JV lead / D&amp;B</span></div>
+          <div class="cont-scope">Kier brings major infrastructure delivery. Nuvia (VINCI subsidiary) provides safety-critical nuclear engineering including ITER experience. Together they hold principal D&amp;B responsibility and are the primary supply chain contact.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">AECOM</div><span class="cont-role r-design">Design &amp; technical</span></div>
+          <div class="cont-scope">Design and technical services across the programme. Global experience in complex scientific, defence and energy facilities. Responsible for technical design integration and engineering assurance.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Turner &amp; Townsend</div><span class="cont-role r-pm">Programme &amp; cost</span></div>
+          <div class="cont-scope">Programme, cost and risk management. Project controls and commercial management across the full portfolio.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">Valves (ATEX / nuclear)</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Actuation &amp; automation</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Process equipment</div><div class="eq-val eq-m">Medium</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">Kier Nuclear and Nuvia UK supply chain / procurement — the JV leads placing sub-tier orders. Award is one week old, supply chain decisions starting now. F4N accreditation is essential.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;step&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;step&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;step&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;step&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;step&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-step"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-step">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-step">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-step" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;step&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;step&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="opp-card" data-sector="nuc" data-status="New" id="card-dnwp" data-score="14" data-size="large" data-updated="2025-10-31">
+      <div class="card-hdr" onclick="toggleCard(&#39;dnwp&#39;)">
+        <div>
+          <div class="card-title">Sellafield DNWP — £4.6bn decommissioning framework</div>
+          <div class="card-client">Client: Sellafield Ltd · Cumbria · Amentum / AtkinsRéalis / Cavendish Nuclear / Westinghouse</div>
+          <div class="card-tags"><span class="tag t-nuc">Nuclear</span><span class="tag t-new">Mobilising — awarded Oct 2025</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Contract value</div><div class="m-val">£4.6bn framework</div></div>
+            <div><div class="m-key">Awarded</div><div class="m-val">31 Oct 2025</div></div>
+            <div><div class="m-key">Contract end</div><div class="m-val">Up to 15 yrs · option to 2040</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">14</div>
+          <div class="spill sp-new" id="spill-dnwp">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            
+            <div class="dsummary">Sellafield's largest-ever decommissioning framework across four lots — hazardous waste retrieval from legacy ponds and silos, remediation and integrated waste management. All lots now mobilising and placing sub-tier procurement.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Lot 1 — Amentum + A2R (AtkinsRéalis &amp; Altrad)</div><span class="cont-role r-lead">Remediation</span></div>
+          <div class="cont-scope">Amentum (up to £1.4bn share) focuses on waste-led decommissioning of the UK's oldest reactor complexes. A2R delivers parallel remediation. A2R also holds Lot 4 — making them the most strategically important contact across the whole framework.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Lot 2 — TDA (Amentum + AtkinsRéalis + Westinghouse)</div><span class="cont-role r-sub">Pond retrievals</span></div>
+          <div class="cont-scope">Retrieves hazardous radiological material from the First Generation Magnox Storage Pond and Pile Fuel Storage Pond using robotic retrieval tools and specialist containment equipment.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Lot 3 — NDS (Altrad + Cavendish Nuclear + Shepley)</div><span class="cont-role r-support">Silo retrievals</span></div>
+          <div class="cont-scope">Covers the Magnox Swarf Storage Silo and Pile Fuel Cladding Silo — the most hazardous buildings in the UK. Cavendish Nuclear leads the nuclear engineering.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Lot 4 — A2R (AtkinsRéalis &amp; Altrad)</div><span class="cont-role r-pm">Integrated waste partner</span></div>
+          <div class="cont-scope">Enterprise-wide nuclear waste coordination across all lots. A2R's dual presence (Lots 1 and 4) makes them the single most important contact on the entire DNWP.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">Valves (nuclear service)</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Instrumentation</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Process &amp; containment</div><div class="eq-val eq-h">High</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">A2R (AtkinsRéalis + Altrad) hold Lots 1 and 4 — most important contact. Amentum UK supply chain next (up to £1.4bn). Cavendish Nuclear via NDS for the silo lot. F4N accreditation essential.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;dnwp&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;dnwp&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;dnwp&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;dnwp&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;dnwp&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-dnwp"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-dnwp">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-dnwp">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-dnwp" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;dnwp&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;dnwp&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="opp-card" data-sector="hyd" data-status="New" id="card-har1" data-score="13" data-size="medium" data-updated="2025-07-22">
+      <div class="card-hdr" onclick="toggleCard(&#39;har1&#39;)">
+        <div>
+          <div class="card-title">HAR1 green hydrogen programme — 10 projects in construction</div>
+          <div class="card-client">GeoPura / JG Pears · HYRO · ScottishPower · UK-wide</div>
+          <div class="card-tags"><span class="tag t-hyd">Hydrogen</span><span class="tag t-new">Contracts signed Jul 2025 · construction live</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Programme value</div><div class="m-val">£400m+ private · £2bn over 15 yrs</div></div>
+            <div><div class="m-key">Contracts signed</div><div class="m-val">July 2025</div></div>
+            <div><div class="m-key">Operational target</div><div class="m-val">Per project: 2025–2028</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">13</div>
+          <div class="spill sp-new" id="spill-har1">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            
+            <div class="dsummary">Ten commercial-scale green hydrogen projects now in active construction across the UK. Each requires hydrogen-rated process valves, flame arresters and actuation. HyMarnham in Newark is the most advanced and geographically closest to RAM.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">GeoPura / JG Pears — HyMarnham, Newark, Notts</div><span class="cont-role r-lead">Commissioning now</span></div>
+          <div class="cont-scope">Repurposing former High Marnham coal station. 43MW solar feeds 8MW electrolysers. Already commissioning electrolyser systems — most advanced HAR1 project. Closest to RAM geographically.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">HYRO — Northfleet, Kent + Barrow-in-Furness</div><span class="cont-role r-lead">In construction</span></div>
+          <div class="cont-scope">Hydrogen for Kimberly-Clark paper mill boilers. Part of £125m combined commitment with Carlton Power and Schroders Greencoat across two K-C sites.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">ScottishPower — Whitelee, Kilmarnock</div><span class="cont-role r-lead">In construction</span></div>
+          <div class="cont-scope">Hydrogen from Whitelee Wind Farm sold to local distilleries and transport operators.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">Valves (H2-rated)</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Flame arresters (Protectoseal)</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Actuation</div><div class="eq-val eq-m">Medium</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">GeoPura (Newark — on RAM's doorstep) and HYRO are most accessible and advanced. Protectoseal flame arresters (gas groups IIA–IIC) are a genuine differentiator for hydrogen service lines.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;har1&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;har1&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;har1&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;har1&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;har1&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-har1"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-har1">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-har1">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-har1" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;har1&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;har1&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="opp-card" data-sector="efw" data-status="New" id="card-teesport" data-score="11" data-size="medium" data-updated="2025-09-01">
+      <div class="card-hdr" onclick="toggleCard(&#39;teesport&#39;)">
+        <div>
+          <div class="card-title">Teesport Renewable Energy Centre — PD Ports / Wentworth Clean Power</div>
+          <div class="card-client">Client: PD Ports (Brookfield) · Teesport Commerce Park, Teesside</div>
+          <div class="card-tags"><span class="tag t-efw">Energy from waste</span><span class="tag t-feed">EPC contractor TBC</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Contract value</div><div class="m-val">£660m (2 plants combined)</div></div>
+            <div><div class="m-key">Agreement</div><div class="m-val">2020 · construction ongoing</div></div>
+            <div><div class="m-key">Target</div><div class="m-val">Post-2025 (revised)</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-mid">11</div>
+          <div class="spill sp-new" id="spill-teesport">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            
+            <div class="dsummary">Two EfW plants at Teesside — Plant 1 (£230m, 30MW, 300,000 t/y) and Plant 2 (£430m, 18MW, 250,000 t/y). Wentworth Clean Power develops, finances and delivers. EPC contractor not publicly confirmed — approaching WCP directly is the route to the engineering house.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Wentworth Clean Power</div><span class="cont-role r-dev">Developer / delivery</span></div>
+          <div class="cont-scope">Surrey-based EfW developer. Responsible for financing and delivering both plants. Selects and manages the EPC contractor — contact WCP directly to identify the engineering house.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">PD Ports (Brookfield Asset Management)</div><span class="cont-role r-support">Site owner</span></div>
+          <div class="cont-scope">Owner of Teesport. Provides land and port access. Not the engineering decision-maker.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">WEY knife gate valves</div><div class="eq-val eq-h">High</div></div><div class="eq-item"><div class="eq-lbl">Flame arresters</div><div class="eq-val eq-m">Medium</div></div><div class="eq-item"><div class="eq-lbl">Actuation</div><div class="eq-val eq-m">Medium</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">Contact Wentworth Clean Power to identify the EPC contractor. Score held at 11 until confirmed. WEY knife gate valves are the specific product angle for waste-stream handling.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;teesport&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;teesport&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;teesport&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;teesport&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;teesport&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-teesport"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-teesport">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-teesport">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-teesport" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;teesport&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;teesport&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="opp-card" data-sector="min" data-status="New" id="card-woodsmith" data-score="11" data-size="medium" data-updated="2026-02-20">
+      <div class="card-hdr" onclick="toggleCard(&#39;woodsmith&#39;)">
+        <div>
+          <div class="card-title">Woodsmith Mine — Anglo American / Worley EPCM</div>
+          <div class="card-client">Client: Anglo American Crop Nutrients · North Yorkshire + Teesside</div>
+          <div class="card-tags"><span class="tag t-min">Mining</span><span class="tag t-slow">CapEx paused 2026 — monitor</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Project value</div><div class="m-val">£7bn+ total</div></div>
+            <div><div class="m-key">Status</div><div class="m-val">CapEx to zero 2026 · tunnel 30km+</div></div>
+            <div><div class="m-key">First production</div><div class="m-val">2027</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-low">9</div>
+          <div class="spill sp-new" id="spill-woodsmith">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            
+            <div class="dsummary">World's largest polyhalite deposit beneath the North York Moors. Strabag's TBM has bored 30km+ of the 37km transport tunnel — a world record. Anglo American has cut capex to zero in 2026 while seeking a strategic partner. Mineral Handling Facility at Wilton, Teesside held by Jacobs Engineering.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list"><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Worley</div><span class="cont-role r-pm">EPCM (since 2022)</span></div>
+          <div class="cont-scope">EPCM for the full Woodsmith programme. Primary commercial contact for process equipment supply when procurement resumes. Keep warm — Worley will be first to know when Anglo American reactivates spend.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Jacobs Engineering Group</div><span class="cont-role r-design">MHF EPC (Wilton, Teesside)</span></div>
+          <div class="cont-scope">EPC for the Mineral Handling Facility at Wilton. The bulk of process valve and flow control demand will sit here when procurement resumes.</div>
+          
+        </div><div class="cont">
+          <div class="cont-hdr"><div class="cont-name">Strabag</div><span class="cont-role r-lead">Tunnel contractor</span></div>
+          <div class="cont-scope">Boring the 37km mineral transport tunnel. TBM Stella Rose holds the world record for the longest continuous single TBM drive at 30km+.</div>
+          
+        </div></div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid"><div class="eq-item"><div class="eq-lbl">Flowrox pinch / slurry valves</div><div class="eq-val eq-m">Medium</div></div><div class="eq-item"><div class="eq-lbl">WEY knife gate valves</div><div class="eq-val eq-m">Medium</div></div><div class="eq-item"><div class="eq-lbl">Process equip. (MHF)</div><div class="eq-val eq-m">Medium</div></div></div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach — and when</div><div class="ap-txt">Worley UK and Jacobs Engineering (Wilton MHF) are the right contacts — but wait for investment resumption signal. Monitor Anglo American news. Revisit Q3 2026.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;woodsmith&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;woodsmith&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;woodsmith&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;woodsmith&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;woodsmith&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+                        <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-woodsmith"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-woodsmith">
+              <option value="email">Intro email sent</option>
+              <option value="linkedin">LinkedIn connected</option>
+              <option value="call">Called</option>
+              <option value="mtg-req">Meeting requested</option>
+              <option value="mtg-held">Meeting held</option>
+              <option value="brochure">Brochure/info sent</option>
+              <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-woodsmith">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-woodsmith" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;woodsmith&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;woodsmith&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opp-card" data-sector="efw" data-status="New" data-new="true" id="card-medworth" data-score="13" data-size="medium" data-updated="2025-10-27">
+      <div class="card-hdr" onclick="toggleCard(&#39;medworth&#39;)">
+        <div>
+          <div class="card-title">Medworth EfW CHP — MVV / Kanadevia Inova, Wisbech, Cambridgeshire</div>
+          <div class="card-client">Client: MVV Environment Medworth Ltd · Wisbech, Cambridgeshire</div>
+          <div class="card-tags"><span class="tag t-efw">Energy from waste</span><span class="tag t-new">Full construction started Oct 2025</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Project value</div><div class="m-val">£500m total investment</div></div>
+            <div><div class="m-key">EPC contractor</div><div class="m-val">Kanadevia Inova — NTP signed Oct 2025</div></div>
+            <div><div class="m-key">Completion</div><div class="m-val">Operational 2029</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">13</div>
+          <div class="spill sp-new" id="spill-medworth">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            <div class="alert-box"><div class="alert-lbl">Timing signal</div><div class="alert-txt">Full-scale construction began October 2025 — piling and main works now underway. Kanadevia Inova is placing sub-tier procurement for process equipment now. This is a 3-year build to 2029 operational target. The procurement window for valves and instrumentation is open.</div></div>
+            <div class="dsummary">The Medworth EfW CHP facility in Wisbech, Cambridgeshire is a £500m investment by German energy company MVV. Kanadevia Inova (formerly Hitachi Zosen Inova) holds the EPC contract — their 22nd UK EfW project. The two-line facility will process up to 625,600 tonnes of residual waste annually, generating 54MW of electricity and 49MW of heat. Construction formally started October 2025, operational target 2029.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list">
+                <div class="cont">
+                  <div class="cont-hdr"><div class="cont-name">Kanadevia Inova</div><span class="cont-role r-lead">EPC contractor</span></div>
+                  <div class="cont-scope">Swiss green-tech firm holding the full EPC contract. Their 22nd UK EfW project — highly experienced in UK market. Responsible for all procurement, engineering and construction. Primary contact for RAM supply chain inclusion. UK office in London.</div>
+                </div>
+                <div class="cont">
+                  <div class="cont-hdr"><div class="cont-name">MVV Environment Medworth Ltd</div><span class="cont-role r-op">Developer / operator</span></div>
+                  <div class="cont-scope">UK subsidiary of German energy giant MVV Energie AG. Project owner and future operator. Not the procurement route — Kanadevia Inova manages all supply chain.</div>
+                </div>
+              </div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid">
+                <div class="eq-item"><div class="eq-lbl">WEY knife gate valves</div><div class="eq-val eq-h">High</div></div>
+                <div class="eq-item"><div class="eq-lbl">Flowrox pinch valves (waste stream)</div><div class="eq-val eq-h">High</div></div>
+                <div class="eq-item"><div class="eq-lbl">Flame arresters (Protectoseal)</div><div class="eq-val eq-m">Medium</div></div>
+              </div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">Kanadevia Inova UK procurement and engineering team directly — they hold all sub-tier contracts. This is their 22nd UK project so they have established supply chain relationships, but procurement is live now. WEY knife gate valves for ash and waste handling, Flowrox pinch valves for slurry and abrasive streams are the specific product angles.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;medworth&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;medworth&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;medworth&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;medworth&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;medworth&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+            <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-medworth"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-medworth">
+                    <option value="email">Intro email sent</option>
+                    <option value="linkedin">LinkedIn connected</option>
+                    <option value="call">Called</option>
+                    <option value="mtg-req">Meeting requested</option>
+                    <option value="mtg-held">Meeting held</option>
+                    <option value="brochure">Brochure/info sent</option>
+                    <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-medworth">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-medworth" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;medworth&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;medworth&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="opp-card" data-sector="nuclear" data-status="New" data-new="true" id="card-wylfa" data-score="12" data-size="large" data-updated="2026-04-02">
+      <div class="card-hdr" onclick="toggleCard(&#39;wylfa&#39;)">
+        <div>
+          <div class="card-title">Wylfa SMR — Rolls-Royce / GBE-N, Anglesey, North Wales</div>
+          <div class="card-client">Client: Great British Energy-Nuclear · Wylfa, Anglesey</div>
+          <div class="card-tags"><span class="tag t-nuclear">Nuclear</span><span class="tag t-new">Owner's engineer awarded 2 Apr 2026</span></div>
+          <div class="card-meta">
+            <div><div class="m-key">Project value</div><div class="m-val">£2.5bn government backing · 3 Rolls-Royce SMRs</div></div>
+            <div><div class="m-key">Owner's engineer</div><div class="m-val">Litmus Nuclear (Amentum + Cavendish Nuclear) £406m, 14yr</div></div>
+            <div><div class="m-key">Completion</div><div class="m-val">Grid connection mid-2030s · site activity starts 2026</div></div>
+          </div>
+        </div>
+        <div class="score-wrap">
+          <div class="score-badge s-high">12</div>
+          <div class="spill sp-new" id="spill-wylfa">New</div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="detail-cols">
+          <div class="detail-left">
+            <div class="alert-box"><div class="alert-lbl">Timing signal — BREAKING TODAY</div><div class="alert-txt">GBE-N awarded £406m, 14-year owner's engineer contract to Litmus Nuclear (Amentum + Cavendish Nuclear) today, 2 April 2026. Site activity begins 2026. Supply chain development and early procurement will follow immediately. F4N accreditation is essential — RAM is well positioned. This is early-stage but the window to get on the radar of Amentum and Cavendish Nuclear is right now.</div></div>
+            <div class="dsummary">The UK's first SMR programme at Wylfa, Anglesey. Backed by £2.5bn government investment, three Rolls-Royce 470MW SMRs will be built by Great British Energy-Nuclear (GBE-N). The owner's engineer contract — awarded today — went to Litmus Nuclear, a JV between Amentum and Cavendish Nuclear, worth up to £406m over 14 years. Rolls-Royce SMR design currently in final GDA stage, expected complete December 2026. Grid connection targeted mid-2030s. Peak construction supports up to 3,000 jobs.</div>
+            <div class="d-sec">
+              <div class="d-lbl">Contractors</div>
+              <div class="cont-list">
+                <div class="cont">
+                  <div class="cont-hdr"><div class="cont-name">Litmus Nuclear (Amentum + Cavendish Nuclear)</div><span class="cont-role r-lead">Owner's engineer — £406m, 14yr</span></div>
+                  <div class="cont-scope">AWARDED TODAY. Will provide independent assurance and technical guidance across design, safety, engineering, construction and commissioning for all three Rolls-Royce SMRs. Cavendish Nuclear (Babcock group) is the UK nuclear specialist sub — they are already on our radar via Urenco TMF. Key contact for RAM supply chain pre-qualification.</div>
+                </div>
+                <div class="cont">
+                  <div class="cont-hdr"><div class="cont-name">Rolls-Royce SMR</div><span class="cont-role r-eng">Technology provider</span></div>
+                  <div class="cont-scope">SMR designer — preferred bidder selected 2025. Design in final GDA assessment, expected complete December 2026. Will develop their own supply chain alongside GBE-N procurement. Worth approaching their supply chain team directly as well.</div>
+                </div>
+                <div class="cont">
+                  <div class="cont-hdr"><div class="cont-name">Great British Energy-Nuclear (GBE-N)</div><span class="cont-role r-op">Project owner</span></div>
+                  <div class="cont-scope">Government body owning and overseeing the programme. Bought Wylfa site from Hitachi in 2024 for £160m. Not the procurement route but sets strategic direction.</div>
+                </div>
+              </div>
+            </div>
+            <div class="d-sec">
+              <div class="d-lbl">RAM equipment relevance</div>
+              <div class="eq-grid">
+                <div class="eq-item"><div class="eq-lbl">PTFE-lined Richter valves (nuclear grade)</div><div class="eq-val eq-h">High</div></div>
+                <div class="eq-item"><div class="eq-lbl">Valmet control valves &amp; actuators (ATEX/SIL)</div><div class="eq-val eq-h">High</div></div>
+                <div class="eq-item"><div class="eq-lbl">Festo pneumatic packages</div><div class="eq-val eq-m">Medium</div></div>
+                <div class="eq-item"><div class="eq-lbl">Protectoseal safety &amp; vent equipment</div><div class="eq-val eq-m">Medium</div></div>
+              </div>
+            </div>
+            <div class="ap-box"><div class="ap-lbl">Who to approach</div><div class="ap-txt">Cavendish Nuclear supply chain team is the priority — they are already a known entity via the Urenco TMF work (Bechtel + Cavendish Nuclear JV). F4N accreditation is essential and RAM has it. Approach Amentum UK nuclear team as co-lead on Litmus. Also worth direct outreach to Rolls-Royce SMR's supply chain development team — they are actively building their UK supply chain now ahead of GDA completion.</div></div>
+          </div>
+          <div class="detail-right">
+            <div class="status-sec">
+              <div class="status-lbl">Status</div>
+              <div class="status-opts">
+                <button class="so act-new" onclick="setStatus(&#39;wylfa&#39;,&#39;New&#39;,this)" data-sv="New"><span class="so-dot" style="background:var(--green)"></span>New</button>
+                <button class="so" onclick="setStatus(&#39;wylfa&#39;,&#39;Contacted&#39;,this)" data-sv="Contacted"><span class="so-dot" style="background:var(--blue)"></span>Contacted</button>
+                <button class="so" onclick="setStatus(&#39;wylfa&#39;,&#39;Responded&#39;,this)" data-sv="Responded"><span class="so-dot" style="background:var(--purple)"></span>Response received</button>
+                <button class="so" onclick="setStatus(&#39;wylfa&#39;,&#39;Quoted&#39;,this)" data-sv="Quoted"><span class="so-dot" style="background:var(--amber)"></span>Quote sent</button>
+                <button class="so" onclick="setStatus(&#39;wylfa&#39;,&#39;Dead&#39;,this)" data-sv="Dead"><span class="so-dot" style="background:#ccc"></span>Dead</button>
+              </div>
+            </div>
+            <div class="act-section">
+              <div class="act-lbl">Activity log</div>
+              <div class="act-list" id="acts-wylfa"></div>
+              <div class="act-compose">
+                <div class="act-row">
+                  <select class="act-select" id="atype-wylfa">
+                    <option value="email">Intro email sent</option>
+                    <option value="linkedin">LinkedIn connected</option>
+                    <option value="call">Called</option>
+                    <option value="mtg-req">Meeting requested</option>
+                    <option value="mtg-held">Meeting held</option>
+                    <option value="brochure">Brochure/info sent</option>
+                    <option value="referral">Referral made</option>
+                  </select>
+                  <select class="act-select" id="asel-wylfa">
+                    <option>Charlotte</option>
+                    <option>Robert James</option>
+                  </select>
+                </div>
+                <textarea class="act-input" id="anote-wylfa" placeholder="Who did you reach, what happened, any context…" onkeydown="if(event.key===&#39;Enter&#39;&amp;&amp;!event.shiftKey){event.preventDefault();addActivity(&#39;wylfa&#39;)}"></textarea>
+                <button class="act-submit" onclick="addActivity(&#39;wylfa&#39;)">Log activity</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- card-list -->
+
+  <div class="sec-div"></div>
+  <div class="sec-hdr">Watch list — not ready to action yet</div>
+  <div class="watch-card"><div><div class="w-name">SDA — submarine valves &amp; actuators ITT (MOD, Bristol)</div><div class="w-why">Defence · £78m · Vanguard and Astute class submarines · Formal ITT July 2026 · Contact <a href="file:///C:/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b382f2a463b2e2f3f4622050f1e181f19122b06040f450c041d451e00">[email&nbsp;protected]</a> now to register interest</div></div><div class="w-score">13/15</div></div>
+  <div class="watch-card"><div><div class="w-name">Sellafield IDP — Morgan Sindall / Costain / HOCHTIEF UK</div><div class="w-why">Nuclear infrastructure · £2.9bn · Costain holds the utilities lot · approach supply chain managers at all three contractors</div></div><div class="w-score">13/15</div></div>
+  <div class="watch-card"><div><div class="w-name">Wylfa SMR — Rolls-Royce / GBE-Nuclear</div><div class="w-why">Nuclear · £2.5bn government commitment · site works 2026 · EPC not expected until 2027–28 · monitor for FEED contractor announcement</div></div><div class="w-score">10/15</div></div>
+
+</div><!-- main -->
+</div><!-- layout -->
+</div><!-- tab-intel -->
+
+<div id="tab-tenders" class="tab-pane">
+  <div class="tf-bar">
+    <span class="tf-label">CPV codes</span>
+    <select class="tf-select" id="tf-cpv">
+      <option value="all" selected="">All RAM-relevant codes</option>
+      <option value="42131000">42131000 — Valves</option>
+      <option value="42131100">42131100 — Control valves</option>
+      <option value="42131160">42131160 — Ball valves</option>
+      <option value="42131200">42131200 — Gate valves</option>
+      <option value="42131400">42131400 — Safety valves</option>
+      <option value="42131500">42131500 — Butterfly valves</option>
+      <option value="31682210">31682210 — Instrumentation &amp; control</option>
+      <option value="42122000">42122000 — Pumps</option>
+      <option value="42131410">42131410 — Pressure-reducing valves</option>
+    </select>
+    <span class="tf-label">Status</span>
+    <select class="tf-select" id="tf-status">
+      <option value="live">Open tenders</option>
+      <option value="awarded">Awarded contracts</option>
+      <option value="both">Both</option>
+    </select>
+    <span class="tf-label">Value from</span>
+    <select class="tf-select" id="tf-valfrom">
+      <option value="0">Any value</option>
+      <option value="50000">£50k+</option>
+      <option value="200000" selected="">£200k+</option>
+      <option value="500000">£500k+</option>
+      <option value="1000000">£1m+</option>
+    </select>
+    <button class="btn-fetch" id="fetch-btn" onclick="fetchTenders()">↻ Fetch live tenders</button>
+    <span class="tf-meta" id="tf-meta"></span>
+  </div>
+  <div id="tender-list-wrap">
+    <div class="tf-empty"><div class="tf-empty-icon">📋</div><div class="tf-empty-title">No tenders loaded yet</div><div class="tf-empty-sub">Click “Fetch live tenders” to pull current opportunities directly from Contracts Finder matching RAM's CPV codes.</div></div>
+  </div>
+</div><!-- tab-tenders -->
+
+<div id="tab-news" class="tab-pane">
+  <div class="tf-bar">
+    <span class="tf-label">Sectors to scan</span>
+    <select class="tf-select" id="ns-sector">
+      <option value="all">All RAM sectors</option>
+      <option value="nuclear">Nuclear &amp; decommissioning</option>
+      <option value="fusion">Fusion</option>
+      <option value="hydrogen">Hydrogen</option>
+      <option value="efw">Energy from waste</option>
+      <option value="chemical">Chemical &amp; pharma</option>
+      <option value="mining">Mining &amp; minerals</option>
+      <option value="marine">Marine</option>
+      <option value="defence">Defence</option>
+      <option value="food">Food &amp; beverage</option>
+      <option value="battery">Battery &amp; recycling</option>
+      <option value="construction">Construction materials</option>
+      <option value="university">University FEED studies</option>
+    </select>
+    <span class="tf-label">Last</span>
+    <select class="tf-select" id="ns-days">
+      <option value="7">7 days</option>
+      <option value="14" selected="">14 days</option>
+      <option value="30">30 days</option>
+    </select>
+    <button class="btn-fetch" id="news-btn" onclick="fetchNews()">↻ Scan news</button>
+    <span class="tf-meta" id="ns-meta"></span>
+  </div>
+  <div id="news-list-wrap">
+    <div class="tf-empty"><div class="tf-empty-icon">📰</div><div class="tf-empty-title">No news scanned yet</div><div class="tf-empty-sub">Click “Scan news” to search recent articles for project signals relevant to RAM's sectors.</div></div>
+  </div>
+</div><!-- tab-news -->
+
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+
+// ---- NEWS SCAN ----
+var NEWS_SECTORS = {
+  'all': 'UK nuclear energy projects, hydrogen plants, EfW energy from waste construction, chemical process industry, mining, marine offshore engineering, defence MOD procurement, food beverage processing, battery gigafactory, construction materials manufacturing FEED EPC contractor valve instrumentation',
+  'nuclear': 'UK nuclear decommissioning Sellafield new build SMR FEED EPC contractor 2026',
+  'fusion': 'UK fusion energy STEP West Burton FEED EPC contractor',
+  'hydrogen': 'UK hydrogen plant HAR1 HAR2 construction EPC contractor valve instrumentation',
+  'efw': 'UK energy from waste EfW plant construction EPC contractor 2026',
+  'chemical': 'UK chemical pharmaceutical process plant FEED EPC contractor',
+  'mining': 'UK mining quarry plant engineering contractor FEED',
+  'marine': 'UK marine offshore vessel shipyard engineering contract valve instrumentation',
+  'defence': 'UK MOD defence procurement engineering valve instrumentation Contracts Finder 2026',
+  'food': 'UK food beverage dairy brewery processing plant engineering contract valve',
+  'battery': 'UK battery gigafactory recycling plant engineering EPC contractor',
+  'construction': 'UK construction materials plasterboard glass cement manufacturing plant engineering contract',
+  'university': 'UK university research FEED feasibility study process engineering contract valve'
+};
+
+function fetchNews(){
+  var btn = document.getElementById('news-btn');
+  var wrap = document.getElementById('news-list-wrap');
+  var meta = document.getElementById('ns-meta');
+  var sector = document.getElementById('ns-sector').value;
+  var days = parseInt(document.getElementById('ns-days').value)||14;
+  var query = NEWS_SECTORS[sector] || NEWS_SECTORS['all'];
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin">&#8635;</span> Scanning&#8230;';
+  wrap.innerHTML = '<div class="tf-loading">Scanning recent news articles&#8230;<br><span style="font-size:11px;color:var(--ink-4)">This takes 20-40 seconds</span></div>';
+  meta.textContent = '';
+
+  var prompt = 'Search the web for recent news articles from the past '+days+' days about: '+query+'. Focus on: project announcements, FEED awards, EPC contract awards, planning permissions, investment decisions, framework agreements involving engineering contractors, fabricators or EPC companies in the UK. RAM Universal Ltd (ramuniversal.co.uk) sells valves, actuators, instrumentation and process equipment to engineering contractors and fabricators. Key RAM products: Valmet control valves/actuators, Bray butterfly valves, Festo pneumatic actuation, Flowrox/WEY knife gate and pinch valves, Richter PTFE-lined valves/pumps, Protectoseal flame arresters, Bardiani hygienic valves, Sterivalves pharma valves. RAM is F4N accredited. For each relevant article found, return a JSON array. Each item must have: title (string), source (string), url (string), date (string YYYY-MM-DD), summary (2-3 sentences explaining what the project is and why relevant to RAM), contractor (the EPC or fabricator name, or Unknown), relevance (High, Medium or Low), ram_angle (specific RAM products that could be supplied). Return ONLY a valid JSON array, no markdown, no explanation. 5-15 most relevant results only. If nothing found return [].';
+
+  fetch('https://green-breeze-bc91.charlottejames.workers.dev', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4000,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      messages: [{ role: 'user', content: prompt }]
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    btn.disabled = false;
+    btn.innerHTML = '&#8635; Scan news';
+    var text = (data.content||[]).filter(function(b){ return b.type==='text'; }).map(function(b){ return b.text; }).join('');
+    text = text.replace(/```json/gi,'').replace(/```/g,'').trim();
+    // Find JSON array - use indexOf to avoid regex issues
+    var start = text.indexOf('[');
+    var end = text.lastIndexOf(']');
+    if(start === -1 || end === -1) throw new Error('No JSON array in response');
+    var articles = JSON.parse(text.substring(start, end+1));
+    renderNews(articles);
+    meta.textContent = articles.length + ' signals found';
+    var badge = document.getElementById('news-badge');
+    badge.textContent = articles.length;
+    badge.style.background = articles.length > 0 ? 'var(--red)' : 'var(--ink-3)';
+    var el = document.getElementById('last-updated-val');
+    if(el){ var now=new Date(); el.textContent=now.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})+', '+now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+  })
+  .catch(function(err){
+    btn.disabled = false;
+    btn.innerHTML = '&#8635; Scan news';
+    wrap.innerHTML = '<div class="tf-error"><strong>Scan failed.</strong> '+escHtml(err.message)+'</div>';
+  });
+}
+
+function renderNews(articles){
+  var wrap = document.getElementById('news-list-wrap');
+  if(!articles||!articles.length){
+    wrap.innerHTML = '<div class="tf-empty"><div class="tf-empty-icon">&#128269;</div><div class="tf-empty-title">No signals found</div><div class="tf-empty-sub">Try a broader sector or longer date range.</div></div>';
+    return;
+  }
+  var order = {High:0, Medium:1, Low:2};
+  articles.sort(function(a,b){ return (order[a.relevance]||2)-(order[b.relevance]||2); });
+  var html = '<div class="tender-list">';
+  articles.forEach(function(a){
+    var relCls = a.relevance==='High' ? 'tc-open' : a.relevance==='Medium' ? '' : 'tc-award';
+    var relTag = a.relevance==='High' ? 'tc-open-tag' : a.relevance==='Medium' ? 'tc-future-tag' : 'tc-award-tag';
+    html += '<div class="tender-card '+relCls+'">';
+    html += '<div>';
+    html += '<div class="tc-title">'+escHtml(a.title||'Untitled')+'</div>';
+    html += '<div class="tc-org">'+escHtml(a.source||'')+(a.date?' &middot; '+escHtml(a.date):'')+(a.contractor&&a.contractor!=='Unknown'?' &middot; Contractor: <strong>'+escHtml(a.contractor)+'</strong>':'')+'</div>';
+    html += '<div class="tc-tags"><span class="tc-tag '+relTag+'">'+escHtml(a.relevance||'')+'</span></div>';
+    if(a.summary) html += '<div style="font-size:12px;color:var(--ink-2);margin-top:7px;line-height:1.6">'+escHtml(a.summary)+'</div>';
+    if(a.ram_angle) html += '<div style="font-size:11px;color:var(--green);margin-top:6px;font-weight:500">&#10003; RAM angle: '+escHtml(a.ram_angle)+'</div>';
+    if(a.url) html += '<a class="tc-link" href="'+escHtml(a.url)+'" target="_blank">Read article &#8599;</a>';
+    html += '</div>';
+    html += '<div style="text-align:right;flex-shrink:0;min-width:60px"><div class="tc-val" style="font-size:11px;color:var(--ink-4)">'+escHtml(a.date||'')+'</div></div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+}
+
+
+// ---- TAB SWITCHING ----
+function switchTab(t){
+  ['intel','tenders','news'].forEach(function(id){
+    document.getElementById('tab-'+id).classList.toggle('tab-show', id===t);
+    document.getElementById('tab-'+id+'-btn').classList.toggle('tab-active', id===t);
+  });
+}
+
+// ---- CPV CODES ----
+var RAM_CPVS = ['42131000','42131100','42131160','42131200','42131400','42131500','31682210','42122000','42131410'];
+
+var CPV_LABELS = {
+  '42131000':'Valves','42131100':'Control valves','42131160':'Ball valves',
+  '42131200':'Gate valves','42131400':'Safety valves','42131500':'Butterfly valves',
+  '31682210':'Instrumentation & control','42122000':'Pumps','42131410':'Pressure-reducing valves'
+};
+
+// ---- FETCH TENDERS (via Anthropic API proxy to bypass CORS) ----
+function fetchTenders(){
+  var btn = document.getElementById('fetch-btn');
+  var wrap = document.getElementById('tender-list-wrap');
+  var meta = document.getElementById('tf-meta');
+  var statusSel = document.getElementById('tf-status').value;
+  var valFrom = parseFloat(document.getElementById('tf-valfrom').value)||0;
+  var cpvSel = document.getElementById('tf-cpv').value;
+  var cpvs = cpvSel === 'all' ? RAM_CPVS : [cpvSel];
+  var statusLabel = statusSel === 'live' ? 'open tenders' : statusSel === 'awarded' ? 'awarded contracts' : 'open and awarded contracts';
+  var cpvLabel = cpvSel === 'all' ? 'all RAM valve, actuation and instrumentation CPV codes' : CPV_LABELS[cpvSel] || cpvSel;
+  var valLabel = valFrom > 0 ? '\u00a3'+valFrom.toLocaleString()+'+' : 'any value';
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin">&#8635;</span> Searching&#8230;';
+  wrap.innerHTML = '<div class="tf-loading">Asking Claude to search Contracts Finder&#8230;<br><span style="font-size:11px;color:var(--ink-4)">This takes 15-30 seconds</span></div>';
+  meta.textContent = '';
+
+  var prompt = 'Search the UK Contracts Finder API (https://www.contractsfinder.service.gov.uk/api/rest/2/search_notices/json) for '+statusLabel+' matching CPV codes: '+cpvs.join(', ')+'. '+
+    'POST to that URL with this exact JSON body: {"searchCriteria":{"statuses":['+(statusSel==='live'?'"Open"':statusSel==='awarded'?'"Awarded"':'"Open","Awarded"')+'],"cpvCodes":'+JSON.stringify(cpvs)+',"valueFrom":'+(valFrom||'null')+'},"size":50}. '+
+    'Return ONLY a JSON array of results (no markdown, no explanation), each object with these fields: id, title, organisationName, regionText, noticeStatus, valueLow, valueHigh, awardedValue, publishedDate, deadlineDate, awardedDate, description (truncate to 200 chars), cpvCodes, isSuitableForSme. '+
+    'If the API returns no results, return an empty array []. If there is an error, return {"error":"description of error"}.';
+
+  fetch('https://green-breeze-bc91.charlottejames.workers.dev', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4000,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      messages: [{ role: 'user', content: prompt }]
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    btn.disabled = false;
+    btn.innerHTML = '&#8635; Fetch live tenders';
+    // Extract text from response
+    var text = (data.content||[]).filter(function(b){ return b.type==='text'; }).map(function(b){ return b.text; }).join('');
+    // Strip markdown fences if present
+    text = text.replace(/```json/gi,'').replace(/```/g,'').trim();
+    // Find JSON array in response
+    var match = text.match(/(\[[\s\S]*\]|\{[\s\S]*\})/);
+    if(!match){ throw new Error('Could not parse response: '+text.substring(0,200)); }
+    var parsed = JSON.parse(match[1]);
+    if(parsed.error){ throw new Error(parsed.error); }
+    var notices = Array.isArray(parsed) ? parsed : (parsed.noticeList||[]).map(function(h){ return h.item||h; });
+    renderTenders({ noticeList: notices.map(function(n){ return {item:n}; }) }, valFrom);
+    // Update timestamp
+    var el = document.getElementById('last-updated-val');
+    if(el){ var now=new Date(); el.textContent=now.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})+', '+now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
+  })
+  .catch(function(err){
+    btn.disabled = false;
+    btn.innerHTML = '&#8635; Fetch live tenders';
+    wrap.innerHTML = '<div class="tf-error"><strong>Search failed.</strong> '+escHtml(err.message)+'<br><br>Make sure you are on the live Netlify board (not a local file) and try again.</div>';
+  });
+}
+
+function fmtVal(lo, hi){
+  if(!lo && !hi) return 'Value not stated';
+  var v = lo || hi;
+  if(v >= 1000000) return '£'+(v/1000000).toFixed(1)+'m';
+  if(v >= 1000) return '£'+(v/1000).toFixed(0)+'k';
+  return '£'+v.toLocaleString();
+}
+
+function fmtDate(d){
+  if(!d) return '—';
+  try { return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+  catch(e){ return d.substring(0,10); }
+}
+
+function renderTenders(data, valFrom){
+  var wrap = document.getElementById('tender-list-wrap');
+  var meta = document.getElementById('tf-meta');
+  var badge = document.getElementById('tenders-badge');
+  var notices = Array.isArray(data) ? data : (data.noticeList||[]).map(function(h){ return h.item||h; });
+
+  // Filter by value client-side too (API sometimes returns below threshold)
+  if(valFrom > 0){
+    notices = notices.filter(function(n){
+      var v = n.valueLow || n.valueHigh || n.awardedValue || 0;
+      return v >= valFrom || v === 0; // keep unknowns
+    });
+  }
+
+  meta.textContent = notices.length + ' results';
+  badge.textContent = notices.length;
+  badge.style.background = notices.length > 0 ? 'var(--red)' : 'var(--ink-3)';
+
+  if(!notices.length){
+    wrap.innerHTML = '<div class="tf-empty"><div class="tf-empty-icon">🔍</div><div class="tf-empty-title">No results found</div><div class="tf-empty-sub">Try broadening the filters — e.g. lower the value threshold or select "Both" for status.</div></div>';
+    return;
+  }
+
+  // Sort: open first, then by published date desc
+  notices.sort(function(a,b){
+    var aOpen = (a.noticeStatus||'').toLowerCase().indexOf('open')!==-1?0:1;
+    var bOpen = (b.noticeStatus||'').toLowerCase().indexOf('open')!==-1?0:1;
+    if(aOpen!==bOpen) return aOpen-bOpen;
+    return (b.publishedDate||'').localeCompare(a.publishedDate||'');
+  });
+
+  var html = '<div class="tender-list">';
+  notices.forEach(function(n){
+    var isOpen = (n.noticeStatus||'').toLowerCase().indexOf('open')!==-1;
+    var isFuture = (n.noticeStatus||'').toLowerCase().indexOf('future')!==-1||
+                   (n.noticeType||'').toLowerCase().indexOf('future')!==-1;
+    var cls = isOpen ? 'tc-open' : isFuture ? 'tc-future' : 'tc-award';
+    var tagCls = isOpen ? 'tc-open-tag' : isFuture ? 'tc-future-tag' : 'tc-award-tag';
+    var tagLabel = isOpen ? 'Open' : isFuture ? 'Future opportunity' : 'Awarded';
+    var val = fmtVal(n.valueLow, n.valueHigh || n.awardedValue);
+    var deadline = n.deadlineDate ? 'Deadline: '+fmtDate(n.deadlineDate) : (n.awardedDate ? 'Awarded: '+fmtDate(n.awardedDate) : 'Published: '+fmtDate(n.publishedDate));
+    var noticeUrl = 'https://www.contractsfinder.service.gov.uk/Notice/'+(n.id||n.parentId||'');
+
+    // CPV pills
+    var cpvHtml = '';
+    if(n.cpvCodes){
+      (n.cpvCodes+'').split(',').forEach(function(c){
+        c = c.trim();
+        if(c) cpvHtml += '<span class="cpv-pill">'+c+(CPV_LABELS[c]?' — '+CPV_LABELS[c]:'')+'</span>';
+      });
+    }
+
+    html += '<div class="tender-card '+cls+'">';
+    html += '<div>';
+    html += '<div class="tc-title">'+escHtml(n.title||'Untitled')+'</div>';
+    html += '<div class="tc-org">'+escHtml(n.organisationName||'')+(n.regionText?'&nbsp;&middot;&nbsp;'+escHtml(n.regionText):'')+'</div>';
+    html += '<div class="tc-tags"><span class="tc-tag '+tagCls+'">'+tagLabel+'</span>';
+    if(n.isSuitableForSme) html += '<span class="tc-tag" style="background:var(--surface-2);color:var(--ink-3)">SME suitable</span>';
+    html += '</div>';
+    if(cpvHtml) html += '<div class="tc-cpv">'+cpvHtml+'</div>';
+    if(n.description){
+      var desc = n.description.substring(0,220)+(n.description.length>220?'…':'');
+      html += '<div style="font-size:12px;color:var(--ink-3);margin-top:8px;line-height:1.55">'+escHtml(desc)+'</div>';
+    }
+    html += '<a class="tc-link" href="'+noticeUrl+'" target="_blank">View on Contracts Finder &#8599;</a>';
+    html += '</div>';
+    html += '<div style="text-align:right;flex-shrink:0">';
+    html += '<div class="tc-val">'+val+'</div>';
+    html += '<div class="tc-dl">'+deadline+'</div>';
+    html += '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+}
+
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+var CARDS = ['urenco','step','dnwp','har1','teesport','woodsmith','medworth','wylfa'];
+var SEED_NOTES = {
+  urenco: [
+    {id: 1000001, author: 'Robert James', text: 'Spoke to a contact at Cavendish Nuclear — confirmed Bechtel are in final stages of FEED and EPC award expected Q2 2026. Worth approaching Bechtel UK directly now. I have a contact in their nuclear procurement team.', date: '24 Mar'}
+  ]
+};
+var notes = {}, statuses = {}, nameColors = {};
+var COLORS = ['#EA1E37','#1a6b3c','#0a4a7a','#7a4a00','#4a2878','#0a5a5a'];
+var SC = {New:'act-new',Contacted:'act-contacted',Responded:'act-responded',Quoted:'act-quoted',Dead:'act-dead'};
+var PC = {New:'sp-new',Contacted:'sp-contacted',Responded:'sp-responded',Quoted:'sp-quoted',Dead:'sp-dead'};
+var PT = {New:'New',Contacted:'Contacted',Responded:'Response received',Quoted:'Quote sent',Dead:'Dead'};
+
+function avatarColor(n){ if(!nameColors[n]) nameColors[n]=COLORS[Object.keys(nameColors).length%COLORS.length]; return nameColors[n]; }
+function initials(n){ return n.split(' ').map(function(w){return w[0]||'';}).join('').toUpperCase().slice(0,2); }
+function showToast(m){ var t=document.getElementById('toast'); if(!t) return; t.textContent=m; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2000); }
+
+function toggleCard(id){
+  var c=document.getElementById('card-'+id);
+  if(!c) return;
+  var wasOpen=c.classList.contains('open');
+  CARDS.forEach(function(k){ var el=document.getElementById('card-'+k); if(el) el.classList.remove('open'); });
+  if(!wasOpen) c.classList.add('open');
+}
+
+function setStatus(id, status, btn){
+  statuses[id]=status;
+  var card=document.getElementById('card-'+id);
+  if(card) card.setAttribute('data-status',status);
+  var pill=document.getElementById('spill-'+id);
+  if(pill){ pill.className='spill '+(PC[status]||'sp-new'); pill.textContent=PT[status]||status; }
+  var row=btn.closest('.status-opts');
+  if(row){ row.querySelectorAll('.so').forEach(function(b){ b.className='so'; }); }
+  btn.classList.add(SC[status]||'act-new');
+  saveAll(); showToast('Status: '+(PT[status]||status));
+}
+
+function addNote(id){
+  var inp=document.getElementById('ni-'+id);
+  var text=inp ? inp.value.trim() : '';
+  if(!text) return;
+  var sel=document.getElementById('nsel-'+id);
+  var author=sel ? sel.value : 'Team';
+  if(author==='__add'){ alert('Please select or add your name.'); return; }
+  if(!notes[id]) notes[id]=[];
+  var d=new Date();
+  notes[id].push({id:Date.now(),author:author,text:text,date:d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})});
+  renderNotes(id);
+  if(inp) inp.value='';
+  saveAll(); showToast('Note added');
+}
+
+function deleteNote(id, nid){
+  if(!notes[id]) return;
+  notes[id]=notes[id].filter(function(n){ return n.id!==nid; });
+  renderNotes(id); saveAll();
+}
+
+function renderNotes(id){
+  var el=document.getElementById('notes-'+id);
+  if(!el) return;
+  var arr=notes[id]||[];
+  if(!arr.length){ el.innerHTML=''; return; }
+  var html='';
+  for(var i=0;i<arr.length;i++){
+    var n=arr[i];
+    var col=avatarColor(n.author);
+    var nid=n.id;
+    html+='<div class="note-item">';
+    html+='<div class="note-top">';
+    html+='<div class="note-av" style="background:'+col+'">'+initials(n.author)+'</div>';
+    html+='<span class="note-author">'+n.author+'</span>';
+    html+='<span class="note-date">'+n.date+'</span>';
+    html+='<button class="note-del" onclick="deleteNote(\''+id+'\','+nid+')">&#215;</button>';
+    html+='</div>';
+    html+='<div class="note-text">'+n.text.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</div>';
+    html+='</div>';
+  }
+  el.innerHTML=html;
+}
+
+function noteKey(e,id){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); addNote(id); } }
+
+// Active filters state
+var activeFilters = { sector: 'all', status: 'all', size: 'all' };
+
+function applyFilters(){
+  CARDS.forEach(function(id){
+    var c=document.getElementById('card-'+id);
+    if(!c) return;
+    var sec=c.getAttribute('data-sector')||'';
+    var st=c.getAttribute('data-status')||'New';
+    var sz=c.getAttribute('data-size')||'medium';
+    var showSec = activeFilters.sector==='all' || sec.indexOf(activeFilters.sector)!==-1;
+    var showSt  = activeFilters.status==='all' || st===activeFilters.status;
+    var showSz  = activeFilters.size==='all' || sz===activeFilters.size ||
+                  (activeFilters.size==='200k' && sz==='small') ||
+                  (activeFilters.size==='500k' && sz==='medium') ||
+                  (activeFilters.size==='large' && sz==='large');
+    c.style.display=(showSec && showSt && showSz)?'':'none';
+  });
+}
+
+function filterSector(btn,s){
+  document.querySelectorAll('.fb').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  activeFilters.sector=s;
+  applyFilters();
+}
+
+function filterStatus(s){
+  activeFilters.status=s;
+  applyFilters();
+}
+
+function filterSize(s){
+  activeFilters.size=s;
+  document.querySelectorAll('.sb-btn').forEach(function(b){
+    if(b.id && b.id.startsWith('sz-')) b.style.fontWeight='';
+  });
+  var el=document.getElementById('sz-'+s);
+  if(el) el.style.fontWeight='600';
+  applyFilters();
+}
+
+// Sort projects - score maps to valve likelihood, updated to recency, project to project size
+var PROJECT_VALUES = {
+  'urenco':1000,'step':10000,'dnwp':4600,'har1':400,'teesport':660,'woodsmith':9000,'medworth':500,'wylfa':2500
+};
+
+function sortCards(mode){
+  var list=document.querySelector('.card-list');
+  if(!list) return;
+  var cards=CARDS.map(function(id){ return document.getElementById('card-'+id); }).filter(Boolean);
+  cards.sort(function(a,b){
+    if(mode==='score'){
+      return parseInt(b.getAttribute('data-score')||0)-parseInt(a.getAttribute('data-score')||0);
+    } else if(mode==='updated'){
+      return (b.getAttribute('data-updated')||'').localeCompare(a.getAttribute('data-updated')||'');
+    } else if(mode==='project'){
+      var idA=a.id.replace('card-',''); var idB=b.id.replace('card-','');
+      return (PROJECT_VALUES[idB]||0)-(PROJECT_VALUES[idA]||0);
+    }
+    return 0;
+  });
+  // Re-append in sorted order (including watch list which stays at bottom)
+  var wl=document.querySelector('.watch-list-section');
+  cards.forEach(function(c){ list.insertBefore(c,wl||null); });
+}
+
+function syncAuthors(){
+  var ga=document.getElementById('global-author');
+  if(!ga) return;
+  var val=ga.value;
+  if(val==='__add'){
+    var name=prompt('Enter your name:');
+    if(name&&name.trim()){
+      val=name.trim();
+      var opt=document.createElement('option');
+      opt.value=val; opt.textContent=val;
+      ga.insertBefore(opt,ga.querySelector('option[value="__add"]'));
+      ga.value=val;
+    } else { ga.value='Charlotte'; return; }
+  }
+  CARDS.forEach(function(id){
+    var sel=document.getElementById('nsel-'+id);
+    if(!sel) return;
+    var exists=Array.from(sel.options).some(function(o){ return o.value===val; });
+    if(!exists){ var o=document.createElement('option'); o.value=val; o.textContent=val; sel.appendChild(o); }
+    sel.value=val;
+  });
+}
+
+// runScan removed — board updated via Claude project + Netlify drag-and-drop
+
+
+
+
+var activities = {};
+var ACT_TYPES = [
+  {val:'email',    label:'Intro email sent',    cls:'at-email'},
+  {val:'linkedin', label:'LinkedIn connected',  cls:'at-linkedin'},
+  {val:'call',     label:'Called',              cls:'at-call'},
+  {val:'mtg-req',  label:'Meeting requested',   cls:'at-meeting-req'},
+  {val:'mtg-held', label:'Meeting held',        cls:'at-meeting-held'},
+  {val:'brochure', label:'Brochure/info sent',  cls:'at-brochure'},
+  {val:'referral', label:'Referral made',       cls:'at-referral'}
+];
+function actTypeInfo(val){ return ACT_TYPES.find(function(t){return t.val===val;})||{label:val,cls:'at-email'}; }
+
+function addActivity(cardId){
+  var typeEl  = document.getElementById('atype-'+cardId);
+  var noteEl  = document.getElementById('anote-'+cardId);
+  var selEl   = document.getElementById('asel-'+cardId);
+  var type    = typeEl ? typeEl.value : 'email';
+  var note    = noteEl ? noteEl.value.trim() : '';
+  var author  = selEl  ? selEl.value : 'Charlotte';
+  if(!note) return;
+  if(!activities[cardId]) activities[cardId]=[];
+  var d = new Date();
+  activities[cardId].push({
+    id:     Date.now(),
+    type:   type,
+    note:   note,
+    author: author,
+    date:   d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})
+  });
+  if(noteEl) noteEl.value='';
+  renderActivities(cardId);
+  saveAll(); showToast('Activity logged');
+}
+
+function deleteActivity(cardId, aid){
+  if(!activities[cardId]) return;
+  activities[cardId] = activities[cardId].filter(function(a){return a.id!==aid;});
+  renderActivities(cardId); saveAll();
+}
+
+function renderActivities(cardId){
+  var el = document.getElementById('acts-'+cardId);
+  if(!el) return;
+  var arr = activities[cardId]||[];
+  if(!arr.length){ el.innerHTML=''; return; }
+  var html='';
+  for(var i=arr.length-1;i>=0;i--){
+    var a   = arr[i];
+    var ti  = actTypeInfo(a.type);
+    var col = avatarColor(a.author);
+    html += '<div class="act-item">';
+    html += '<div class="act-top">';
+    html += '<div class="act-av" style="background:'+col+'">'+initials(a.author)+'</div>';
+    html += '<span class="act-author">'+a.author+'</span>';
+    html += '<span class="act-date">'+a.date+'</span>';
+    html += '<button class="act-del" onclick="deleteActivity(\''+cardId+'\','+a.id+')">&#215;</button>';
+    html += '</div>';
+    html += '<span class="act-type-pill '+ti.cls+'">'+ti.label+'</span>';
+    html += '<div class="act-note">'+a.note.replace(/</g,'&lt;')+'</div>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function renderAllActivities(){
+  CARDS.forEach(function(id){ try{renderActivities(id);}catch(e){} });
+}
+
+function saveAll(){
+  try{
+    localStorage.setItem('ram_bd_n', JSON.stringify(notes));
+    localStorage.setItem('ram_bd_s', JSON.stringify(statuses));
+    localStorage.setItem('ram_bd_a', JSON.stringify(activities));
+  } catch(e){}
+}
+
+function load(){
+  try{
+    // Merge seed notes for demo purposes
+    Object.keys(SEED_NOTES).forEach(function(id){
+      if(!notes[id] || notes[id].length===0){
+        notes[id] = SEED_NOTES[id].slice();
+      }
+    });
+    var n=localStorage.getItem('ram_bd_n');
+    var s=localStorage.getItem('ram_bd_s');
+    if(n) notes=JSON.parse(n);
+    if(s){
+      statuses=JSON.parse(s);
+      Object.keys(statuses).forEach(function(id){
+        try{
+          var status=statuses[id];
+          var card=document.getElementById('card-'+id);
+          if(!card) return;
+          card.setAttribute('data-status',status);
+          var pill=document.getElementById('spill-'+id);
+          if(pill){
+            pill.className='spill '+(PC[status]||'sp-new');
+            pill.textContent=PT[status]||status;
+          }
+          var btns=card.querySelectorAll('.so');
+          btns.forEach(function(b){
+            if(!b) return;
+            b.className='so';
+            if(b.getAttribute('data-sv')===status){
+              b.classList.add(SC[status]||'act-new');
+            }
+          });
+        } catch(ex){}
+      });
+    }
+    CARDS.forEach(function(id){ try{ renderNotes(id); } catch(ex){} });
+    try{
+      var av=localStorage.getItem('ram_bd_a');
+      if(av) activities=JSON.parse(av);
+      renderAllActivities();
+    } catch(ex){}
+    try{
+      var c=localStorage.getItem('ram_bd_c');
+      if(c) contacts=JSON.parse(c);
+      renderAllContacts();
+    } catch(ex){}
+  } catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded', load);
+
+</script>
+
+
+</body></html>
